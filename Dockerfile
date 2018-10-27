@@ -4,7 +4,7 @@ FROM hurricane/dockergui:xvnc
 
 MAINTAINER David Coppit <david@coppit.org>
 
-ENV APP_NAME="HandBrake" WIDTH=1280 HEIGHT=720 TERM=xterm
+ENV APP_NAME="HandBrake" #WIDTH=1280 HEIGHT=720 TERM=xterm
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
@@ -29,7 +29,7 @@ add-apt-repository ppa:stebbins/handbrake-releases && \
 
 # Update apt and install dependencies.
 apt-get update && \
-apt-get install -qy handbrake-gtk handbrake-cli gnome-themes-standard && \
+apt-get install -qy handbrake-gtk handbrake-cli && \ #gnome-themes-standard && \
 
 # Install watchdog module for Python3, for monitor.py
 apt-get install -qy python3-setuptools && \
@@ -45,7 +45,7 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
 VOLUME ["/media", "/watch", "/output", "/config"]
 
-EXPOSE 3389 8080
+#EXPOSE 3389 8080
 # Set the locale, to support files that have non-ASCII characters
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -60,10 +60,10 @@ RUN \
 # SEVERE: The scratchDir you specified: /var/lib/tomcat7/work/Catalina/localhost/guacamole is unusable.
 # SEVERE: Cannot find specified temporary folder at /tmp/tomcat7-tomcat7-tmp
 # WARNING: Failed to create work directory [/var/lib/tomcat7/work/Catalina/localhost/_] for context []
-mkdir -p /var/cache/tomcat7 /tmp/tomcat7-tomcat7-tmp /var/lib/tomcat7/work/Catalina/localhost && \
-ln -s /var/lib/tomcat7/common /usr/share/tomcat7/common && \
-ln -s /var/lib/tomcat7/server /usr/share/tomcat7/server && \
-ln -s /var/lib/tomcat7/shared /usr/share/tomcat7/shared && \
+#mkdir -p /var/cache/tomcat7 /tmp/tomcat7-tomcat7-tmp /var/lib/tomcat7/work/Catalina/localhost && \
+#ln -s /var/lib/tomcat7/common /usr/share/tomcat7/common && \
+#ln -s /var/lib/tomcat7/server /usr/share/tomcat7/server && \
+#ln -s /var/lib/tomcat7/shared /usr/share/tomcat7/shared && \
 
 # Revision-lock to a specific version to avoid any surprises.
 wget -q -O /files/runas.sh \
