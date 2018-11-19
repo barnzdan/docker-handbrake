@@ -1,10 +1,11 @@
-FROM hurricane/dockergui:xvnc
+FROM ubuntu:1604
+#FROM hurricane/dockergui:xvnc
 #FROM hurricane/dockergui:x11rdp
 #FROM hurricane/dockergui:xvnc
 
 MAINTAINER David Coppit <david@coppit.org>
 
-ENV APP_NAME="HandBrake" #WIDTH=1280 HEIGHT=720 TERM=xterm
+ENV APP_NAME="HandBrake" 
 
 # Use baseimage-docker's init system
 CMD ["/sbin/my_init"]
@@ -52,7 +53,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-COPY startapp.sh /
+#COPY startapp.sh /
 
 RUN \
 
